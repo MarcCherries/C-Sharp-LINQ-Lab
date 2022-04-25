@@ -32,9 +32,10 @@ namespace DatabaseFirstLINQ
             //ProblemFifteen();
             //ProblemSixteen();
             //ProblemSeventeen();
-            ProblemEighteen();
+            //ProblemEighteen();
             //ProblemNineteen();
             //ProblemTwenty();
+            BonusOne();
         }
 
         // <><><><><><><><> R Actions(Read) <><><><><><><><><>
@@ -262,17 +263,17 @@ namespace DatabaseFirstLINQ
 
         //<><> D Actions(Delete) <><>
 
-        private void ProblemEighteen()
-        {
-            Console.WriteLine("success!");
-            //Delete the role relationship from the user who has the email "oda@gmail.com" using LINQ.
-            var userRole = _context.UserRoles.Where(ur => ur.User.Email == "afton@gmail.com").SingleOrDefault();
+        //private void ProblemEighteen()
+        //{
+        //    Console.WriteLine("success!");
+        //    //Delete the role relationship from the user who has the email "oda@gmail.com" using LINQ.
+        //    var userRole = _context.UserRoles.Where(ur => ur.User.Email == "afton@gmail.com").SingleOrDefault();
 
-            _context.UserRoles.Remove(userRole);
-            _context.SaveChanges();
+        //    _context.UserRoles.Remove(userRole);
+        //    _context.SaveChanges();
 
 
-        }
+        //}
 
 
 
@@ -304,12 +305,28 @@ namespace DatabaseFirstLINQ
 
         // <><><><><><><><> BONUS PROBLEMS<><><><><><><><><>
 
-        //private void BonusOne()
-        //{
-        //    Prompt the user to enter in an email and password through the console.
-        //     Take the email and password and check if the there is a person that matches that combination.
-        //     Print "Signed In!" to the console if they exists and the values match otherwise print "Invalid Email or Password.".
-        //}
+        private void BonusOne()
+        {
+            //Prompt the user to enter in an email and password through the console.
+            // Take the email and password and check if the there is a person that matches that combination.
+            // Print "Signed In!" to the console if they exists and the values match otherwise print "Invalid Email or Password."
+
+            Console.WriteLine("Enter email:");
+            string userEmail = Console.ReadLine();
+
+            Console.WriteLine("Enter password:");
+            string userPassword = Console.ReadLine();
+
+            if (_context.Users.Count((u) => u.Email == userEmail && u.Password == userPassword) == 0)
+            {
+                Console.WriteLine("Invalid Email or Password.");
+            }
+            else
+            {
+                Console.WriteLine("Signed In!");
+            }
+
+        }
 
         //private void BonusTwo()
         //{
