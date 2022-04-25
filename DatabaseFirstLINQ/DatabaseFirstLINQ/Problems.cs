@@ -21,11 +21,11 @@ namespace DatabaseFirstLINQ
             ProblemFour();
             ProblemFive();
             ProblemSix();
-            //ProblemSeven();
+            ProblemSeven();
             //ProblemEight();
             //ProblemNine();
             //ProblemTen();
-            //ProblemEleven();
+            ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
             //ProblemFourteen();
@@ -99,8 +99,8 @@ namespace DatabaseFirstLINQ
         }
 
      
-            private void ProblemSix()
-            {
+        private void ProblemSix()
+        {
 
                 var usersBeforeDate = _context.Users.Where(u => u.RegistrationDate > DateTime.Parse("12/31/2016").Date && u.RegistrationDate < DateTime.Parse("01/01/2018").Date);
 
@@ -112,34 +112,20 @@ namespace DatabaseFirstLINQ
                 //    Write a LINQ query that gets all of the users who registered AFTER 2016 and BEFORE 2018
                 //     Then print each user's email and registration date to the console.
 
-            }
-
-
-
-
-
-
-
-
-
-
-            //Write a LINQ query that gets all of the users who registered AFTER 2016 and BEFORE 2018
-            // Then print each user's email and registration date to the console.
-
         }
 
-        // <><><><><><><><> R Actions(Read) with Foreign Keys<><><><><><><><><>
+    // <><><><><><><><> R Actions(Read) with Foreign Keys<><><><><><><><><>
 
-        //private void ProblemSeven()
-        //{
-        //    Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
+    private void ProblemSeven()
+    {
+        //Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
         //     Then print the users email and role name to the console.
-        //    var customerUsers = _context.UserRoles.Include(ur => ur.Role).Include(ur => ur.User).Where(ur => ur.Role.RoleName == "Customer");
-        //    foreach (UserRole userRole in customerUsers)
-        //    {
-        //        Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
-        //    }
-        //}
+        var customerUsers = _context.UserRoles.Include(ur => ur.Role).Include(ur => ur.User).Where(ur => ur.Role.RoleName == "Customer");
+        foreach (UserRole userRole in customerUsers)
+        {
+            Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
+        }
+    }
 
         //private void ProblemEight()
         //{
@@ -167,17 +153,17 @@ namespace DatabaseFirstLINQ
 
         // <><> C Actions(Create) <><>
 
-        //private void ProblemEleven()
-        //{
-        //    Create a new User object and add that user to the Users table using LINQ.
-        //   User newUser = new User()
-        //   {
-        //       Email = "david@gmail.com",
-        //       Password = "DavidsPass123"
-        //   };
-        //    _context.Users.Add(newUser);
-        //    _context.SaveChanges();
-        //}
+        private void ProblemEleven()
+        {
+            //Create a new User object and add that user to the Users table using LINQ.
+           User newUser = new User()
+           {
+               Email = "david@gmail.com",
+               Password = "DavidsPass123"
+           };
+            _context.Users.Add(newUser);
+            _context.SaveChanges();
+        }
 
         //private void ProblemTwelve()
         //{
