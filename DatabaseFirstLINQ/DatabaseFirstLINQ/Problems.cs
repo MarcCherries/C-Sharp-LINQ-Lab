@@ -24,11 +24,11 @@ namespace DatabaseFirstLINQ
             //ProblemSeven();
             //ProblemEight();
             //ProblemNine();
-            ProblemTen();
+            //ProblemTen();
             //ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
-            //ProblemFourteen();
+            ProblemFourteen();
             //ProblemFifteen();
             //ProblemSixteen();
             //ProblemSeventeen();
@@ -155,23 +155,18 @@ namespace DatabaseFirstLINQ
 
         //}
 
-        private void ProblemTen()
-        {
-            //Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
-            // Then print the user's email as well as the product's name, price, and quantity to the console.
-            var employeeList = _context.UserRoles.Where(ur => ur.Role.RoleName == "Employee");
-            var employeeProducts = employeeList.Include(e => e.User).Select(e => e.User.ShoppingCarts);
-            foreach (ShoppingCart  employee in employeeProducts)
-            {
-                Console.WriteLine($"{employee.Product.Price}");
-            }
+        //private void ProblemTen()
+        //{
+        //    //Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
+        //    // Then print the user's email as well as the product's name, price, and quantity to the console.
+        //    var employeeList = _context.ShoppingCarts.Where(sc => sc.User.UserRoles. == )
 
 
-            // <><><><><><><><> CUD(Create, Update, Delete) Actions<><><><><><><><><>
+        //    // <><><><><><><><> CUD(Create, Update, Delete) Actions<><><><><><><><><>
 
-            // <><> C Actions(Create) <><>
-        }
-        //private void ProblemEleven()
+        //    // <><> C Actions(Create) <><>
+        //}
+        ////private void ProblemEleven()
         //{
         //    //Create a new User object and add that user to the Users table using LINQ.
         //    User newUser = new User()
@@ -211,11 +206,20 @@ namespace DatabaseFirstLINQ
         //    _context.SaveChanges();
         //}
 
-        //private void ProblemFourteen()
-        //{
-        //    Add the product you create to the user we created in the ShoppingCart junction table using LINQ.
-
-        //}
+        private void ProblemFourteen()
+        {
+            //Add the product you create to the user we created in the ShoppingCart junction table using LINQ.
+            var productId = _context.Products.Where(p => p.Name == "Tablet").Select(p => p.Id).SingleOrDefault();
+            var userId = _context.Users.Where(u => u.Email == "oda@gmail.com").Select(u => u.Id).SingleOrDefault();
+            ShoppingCart newShoppingCart = new ShoppingCart()
+            {
+                UserId = userId,
+                ProductId = productId,
+                Quantity = 1
+            };
+            _context.ShoppingCarts.Add(newShoppingCart);
+            _context.SaveChanges();
+        }
 
         // <><> U Actions(Update) <><>
 
