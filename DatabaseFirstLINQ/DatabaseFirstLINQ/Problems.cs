@@ -16,26 +16,25 @@ namespace DatabaseFirstLINQ
         public void RunLINQQueries()
         {
             ProblemOne();
-            ProblemTwo();
-            ProblemThree();
-            ProblemFour();
-            ProblemFive();
-            ProblemSix();
-            ProblemSeven();
+            //ProblemTwo();
+            //ProblemThree();
+            //ProblemFour();
+            //ProblemFive();
+            //ProblemSix();
+            //ProblemSeven();
             //ProblemEight();
             //ProblemNine();
             //ProblemTen();
             //ProblemEleven();
-
             //ProblemTwelve();
             //ProblemThirteen();
             //ProblemFourteen();
             //ProblemFifteen();
-            //ProblemSixteen();
+            ProblemSixteen();
             //ProblemSeventeen();
             //ProblemEighteen();
             //ProblemNineteen();
-            ProblemTwenty();
+            //ProblemTwenty();
         }
 
         // <><><><><><><><> R Actions(Read) <><><><><><><><><>
@@ -43,90 +42,91 @@ namespace DatabaseFirstLINQ
         {
             int userList = _context.Users.ToList().Count;
             Console.WriteLine(userList);
+            Console.WriteLine("========");
 
 
         }
 
-        private void ProblemTwo()
-        {
+        //private void ProblemTwo()
+        //{
 
-            var users = _context.Users;
+        //    var users = _context.Users;
 
-            foreach (User user in users)
-            {
-                Console.WriteLine(user.Email);
-            }
+        //    foreach (User user in users)
+        //    {
+        //        Console.WriteLine(user.Email);
+        //    }
 
-        }
+        //}
 
-        private void ProblemThree()
-        {
-            var productsOver = _context.Products.Where(p => p.Price > 150);
-            foreach (Product product in productsOver)
-            {
-                Console.WriteLine(product.Name);
-            }
+        //private void ProblemThree()
+        //{
+        //    var productsOver = _context.Products.Where(p => p.Price > 150);
+        //    foreach (Product product in productsOver)
+        //    {
+        //        Console.WriteLine(product.Name);
+        //    }
 
-            // Write a LINQ query that gets each product where the products price is greater than $150.
-            // Then print the name and price of each product from the above query to the console.
+        //    // Write a LINQ query that gets each product where the products price is greater than $150.
+        //    // Then print the name and price of each product from the above query to the console.
 
-        }
+        //}
 
-        private void ProblemFour()
-        {
-            var productsWithS = _context.Products.Where(p => p.Name.Contains("s"));
-            foreach (Product product in productsWithS)
-            {
-                Console.WriteLine(product.Name);
-            }
+        //private void ProblemFour()
+        //{
+        //    var productsWithS = _context.Products.Where(p => p.Name.Contains("s"));
+        //    foreach (Product product in productsWithS)
+        //    {
+        //        Console.WriteLine(product.Name);
+        //    }
 
-        }
-        private void ProblemFive()
-        {
-            var usersBeforeDate = _context.Users.Where(u => u.RegistrationDate < DateTime.Parse("01/01/2016").Date);
+        //}
+        //private void ProblemFive()
+        //{
+        //    var usersBeforeDate = _context.Users.Where(u => u.RegistrationDate < DateTime.Parse("01/01/2016").Date);
 
-            foreach (User user in usersBeforeDate)
-            {
+        //    foreach (User user in usersBeforeDate)
+        //    {
 
-                Console.WriteLine($"Email: {user.Email} Registration date: {user.RegistrationDate}");
+        //        Console.WriteLine($"Email: {user.Email} Registration date: {user.RegistrationDate}");
 
-            }
-
-
-
-            //    Write a LINQ query that gets all of the users who registered BEFORE 2016
-            //     Then print each user's email and registration date to the console.
-
-        }
+        //    }
 
 
-        private void ProblemSix()
-        {
 
-            var usersBeforeDate = _context.Users.Where(u => u.RegistrationDate > DateTime.Parse("12/31/2016").Date && u.RegistrationDate < DateTime.Parse("01/01/2018").Date);
+        //    //    Write a LINQ query that gets all of the users who registered BEFORE 2016
+        //    //     Then print each user's email and registration date to the console.
 
-            foreach (User user in usersBeforeDate)
-            {
-                Console.WriteLine($"Email: {user.Email} Registration date: {user.RegistrationDate}");
-            }
+        //}
 
-            //    Write a LINQ query that gets all of the users who registered AFTER 2016 and BEFORE 2018
-            //     Then print each user's email and registration date to the console.
 
-        }
+        //private void ProblemSix()
+        //{
+
+        //    var usersBeforeDate = _context.Users.Where(u => u.RegistrationDate > DateTime.Parse("12/31/2016").Date && u.RegistrationDate < DateTime.Parse("01/01/2018").Date);
+
+        //    foreach (User user in usersBeforeDate)
+        //    {
+        //        Console.WriteLine($"Email: {user.Email} Registration date: {user.RegistrationDate}");
+        //    }
+
+        //    //    Write a LINQ query that gets all of the users who registered AFTER 2016 and BEFORE 2018
+        //    //     Then print each user's email and registration date to the console.
+
+        //}
 
         // <><><><><><><><> R Actions(Read) with Foreign Keys<><><><><><><><><>
 
-        private void ProblemSeven()
-        {
-            //Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
-            //     Then print the users email and role name to the console.
-            var customerUsers = _context.UserRoles.Include(ur => ur.Role).Include(ur => ur.User).Where(ur => ur.Role.RoleName == "Customer");
-            foreach (UserRole userRole in customerUsers)
-            {
-                Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
-            }
-        }
+        //private void ProblemSeven()
+        //{
+        //    //Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
+        //    //     Then print the users email and role name to the console.
+        //    var customerUsers = _context.UserRoles.Include(ur => ur.Role).Include(ur => ur.User).Where(ur => ur.Role.RoleName == "Customer");
+        //    foreach (UserRole userRole in customerUsers)
+        //    {
+        //        Console.WriteLine($"Email: {userRole.User.Email} Role: {userRole.Role.RoleName}");
+        //    }
+        //}
 
         //private void ProblemEight()
         //{
@@ -211,11 +211,17 @@ namespace DatabaseFirstLINQ
         //    _context.SaveChanges();
         //}
 
-        //private void ProblemSixteen()
-        //{
-        //    Update the price of the product you created to something different using LINQ.
+        private void ProblemSixteen()
+        {
+            //Update the price of the product you created to something different using LINQ.
 
-        //}
+            var productToUpdate = _context.Products.Where(p => p.Id == 8).SingleOrDefault();
+
+            productToUpdate.Price = 1050;
+
+            _context.Products.Update(productToUpdate);
+            _context.SaveChanges();
+        }
 
         //private void ProblemSeventeen()
         //{
@@ -240,7 +246,7 @@ namespace DatabaseFirstLINQ
         //    Console.WriteLine("success!");
         //    //Delete the role relationship from the user who has the email "oda@gmail.com" using LINQ.
         //    var userRole = _context.UserRoles.Where(ur => ur.User.Email == "bibi@gmail.com").SingleOrDefault();
-          
+
         //    _context.UserRoles.Remove(userRole);
         //    _context.SaveChanges();
 
@@ -248,7 +254,7 @@ namespace DatabaseFirstLINQ
         //}
 
 
-        
+
 
         //private void ProblemNineteen()
         //{
@@ -262,16 +268,18 @@ namespace DatabaseFirstLINQ
         //    _context.SaveChanges();
         //}
 
-        private void ProblemTwenty()
-        {
-            //Delete the user with the email "oda@gmail.com" from the Users table using LINQ.
+        //private void ProblemTwenty()
+        //{
+        //    //Delete the user with the email "oda@gmail.com" from the Users table using LINQ.
 
-            var userToDelete = _context.Users.Where(u => u.Email == "oda@gmail.com");
-            Console.WriteLine("======>", userToDelete);
-            //_context.Users.Remove(userToDelete);
-            //_context.SaveChanges();
+        //    var userToDelete = _context.Users.Where(u => u.Email == "oda@gmail.com").SingleOrDefault();
+        //    Console.WriteLine("========");
+        //    Console.WriteLine(userToDelete);
 
-        }
+        //    _context.Users.Remove(userToDelete);
+        //    _context.SaveChanges();
+
+        //}
 
         // <><><><><><><><> BONUS PROBLEMS<><><><><><><><><>
 
