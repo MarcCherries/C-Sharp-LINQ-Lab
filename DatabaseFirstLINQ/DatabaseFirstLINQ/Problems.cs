@@ -23,14 +23,14 @@ namespace DatabaseFirstLINQ
             //ProblemSix();
             //ProblemSeven();
             //ProblemEight();
-            //ProblemNine();
+            ProblemNine();
             //ProblemTen();
             //ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
             //ProblemFourteen();
             //ProblemFifteen();
-            ProblemSixteen();
+            //ProblemSixteen();
             //ProblemSeventeen();
             //ProblemEighteen();
             //ProblemNineteen();
@@ -135,13 +135,17 @@ namespace DatabaseFirstLINQ
 
         //}
 
-        //private void ProblemNine()
-        //{
-        //    Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "oda@gmail.com" and returns the sum of all of the products prices.
-        //     HINT: End of query will be: .Select(sc => sc.Product.Price).Sum();
-        //    Then print the total of the shopping cart to the console.
+        private void ProblemNine()
+        {
+            //Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "oda@gmail.com" and returns the sum of all of the products prices.
+            // HINT: End of query will be: .Select(sc => sc.Product.Price).Sum();
+            //Then print the total of the shopping cart to the console.
+            var productsToSum = _context.ShoppingCarts.Include(sc => sc.Product).Where(sc => sc.User.Email == "oda@gmail.com").Select(sc => sc.Product.Price).Sum(); 
+            Console.WriteLine(productsToSum);
 
-        //}
+
+
+        }
 
         //private void ProblemTen()
         //{
@@ -211,17 +215,17 @@ namespace DatabaseFirstLINQ
         //    _context.SaveChanges();
         //}
 
-        private void ProblemSixteen()
-        {
-            //Update the price of the product you created to something different using LINQ.
+        //private void ProblemSixteen()
+        //{
+        //    //Update the price of the product you created to something different using LINQ.
 
-            var productToUpdate = _context.Products.Where(p => p.Id == 8).SingleOrDefault();
+        //    var productToUpdate = _context.Products.Where(p => p.Id == 8).SingleOrDefault();
 
-            productToUpdate.Price = 1050;
+        //    productToUpdate.Price = 1050;
 
-            _context.Products.Update(productToUpdate);
-            _context.SaveChanges();
-        }
+        //    _context.Products.Update(productToUpdate);
+        //    _context.SaveChanges();
+        //}
 
         //private void ProblemSeventeen()
         //{
