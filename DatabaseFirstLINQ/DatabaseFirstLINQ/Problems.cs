@@ -35,8 +35,13 @@ namespace DatabaseFirstLINQ
             //ProblemEighteen();
             //ProblemNineteen();
             //ProblemTwenty();
+<<<<<<< HEAD
             //BonusOne()
             BonusThree();
+=======
+            //BonusOne();
+            BonusTwo();
+>>>>>>> 5cf0031fe9c848fb1ca69d8a4f852ec39aa99c4d
         }
 
         // <><><><><><><><> R Actions(Read) <><><><><><><><><>
@@ -165,6 +170,7 @@ namespace DatabaseFirstLINQ
         //        //Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
         //        // Then print the user's email as well as the product's name, price, and quantity to the console.
 
+<<<<<<< HEAD
         //        var roleType = _context.Roles.Where(r => r.RoleName == "Employee").Include(r => r.UserRoles);
         //        var products = _context.ShoppingCarts.Include(sc => sc.Product).Where(sc => sc.).Select(sc => sc.Product);
 
@@ -395,6 +401,18 @@ namespace DatabaseFirstLINQ
             
 
             //2.If the user succesfully signs in
+=======
+        //        var employees = _context.UserRoles.Where(ur => ur.Role.RoleName == "Employee").Select(ur => ur.User.Id);
+
+
+
+        //        foreach (var employee in employees)
+        //        {
+        //            var carts = _context.ShoppingCarts.Include(sc => sc.Product).Where(sc => sc.User.Id.Equals(employee));
+        //            Console.WriteLine(carts);
+        //        }
+        //    }
+>>>>>>> 5cf0031fe9c848fb1ca69d8a4f852ec39aa99c4d
 
 
             //a.Give them a menu where they perform the following actions within the console
@@ -406,6 +424,7 @@ namespace DatabaseFirstLINQ
             //View all products in the Products table
 
 
+<<<<<<< HEAD
             //Add a product to the shopping cart(incrementing quantity if that product is already in their shopping cart)
             //      Remove a product from their shopping cart
             //      3.If the user does not succesfully sing in
@@ -414,6 +433,107 @@ namespace DatabaseFirstLINQ
 
         }
 
+=======
+            //private void ProblemNineteen()
+            //{
+            //    //Delete all of the product relationships to the user with the email "oda@gmail.com" in the ShoppingCart table using LINQ.
+            //    //HINT: Loop
+            //   var shoppingCartProducts = _context.ShoppingCarts.Where(sc => sc.User.Email == "oda@gmail.com");
+            //    foreach (ShoppingCart userProductRelationship in shoppingCartProducts)
+            //    {
+            //        _context.ShoppingCarts.Remove(userProductRelationship);
+            //    }
+            //    _context.SaveChanges();
+            //}
+
+            //private void ProblemTwenty()
+            //{
+            //    //Delete the user with the email "oda@gmail.com" from the Users table using LINQ.
+
+            //    var userToDelete = _context.Users.Where(u => u.Email == "oda@gmail.com").SingleOrDefault();
+            //    Console.WriteLine("========");
+            //    Console.WriteLine(userToDelete);
+
+            //    _context.Users.Remove(userToDelete);
+            //    _context.SaveChanges();
+
+            //}
+
+            //        // <><><><><><><><> BONUS PROBLEMS<><><><><><><><><>
+
+            //        private void BonusOne()
+            //{
+            //    //Prompt the user to enter in an email and password through the console.
+            //    // Take the email and password and check if the there is a person that matches that combination.
+            //    // Print "Signed In!" to the console if they exists and the values match otherwise print "Invalid Email or Password."
+
+            //    Console.WriteLine("Enter email:");
+            //    string userEmail = Console.ReadLine();
+
+            //    Console.WriteLine("Enter password:");
+            //    string userPassword = Console.ReadLine();
+
+            //    if (_context.Users.Count((u) => u.Email == userEmail && u.Password == userPassword) == 0)
+            //    {
+            //        Console.WriteLine("Invalid Email or Password.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Signed In!");
+            //    }
+
+            //}
+            private void BonusTwo()
+            {
+                //Write a query that finds the total of every users shopping cart products using LINQ.
+                //Display the total of each users shopping cart as well as the total of the totals to the console.
+
+                int grandTotal = 0;
+
+                Console.WriteLine(grandTotal);
+
+                var users = _context.Users.ToList();
+                foreach (var user in users)
+                {
+                    var shoppingCart = _context.ShoppingCarts.Where(sc => sc.UserId == user.Id).Select(sc => sc.Product.Price);
+                    var quatity = _context.ShoppingCarts.Where(sc => sc.UserId == user.Id).Select(sc => sc.Quantity);
+                Console.WriteLine(quatity.Count());
+
+
+                foreach (var shoppingCartItem in shoppingCart)
+                    {
+                        Console.WriteLine("=======");
+                        Console.WriteLine(user.Email);
+                        Console.WriteLine(shoppingCartItem);
+                      
+                    }
+
+                }
+            }
+
+            //BIG ONE
+            //private void BonusThree()
+            //{
+            //    1.Create functionality for a user to sign in via the console
+
+            //   2.If the user succesfully signs in
+
+            //   a.Give them a menu where they perform the following actions within the console
+
+            //   View the products in their shopping cart
+
+            //   View all products in the Products table
+
+            //   Add a product to the shopping cart(incrementing quantity if that product is already in their shopping cart)
+            //     Remove a product from their shopping cart
+            //     3.If the user does not succesfully sing in
+            //     a.Display "Invalid Email or Password"
+            //     b.Re - prompt the user for credentials
+
+            //}
+
+        //}
+>>>>>>> 5cf0031fe9c848fb1ca69d8a4f852ec39aa99c4d
     }
     }
 
