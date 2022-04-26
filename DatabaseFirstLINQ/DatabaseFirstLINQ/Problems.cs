@@ -24,7 +24,7 @@ namespace DatabaseFirstLINQ
             //ProblemSeven();
             //ProblemEight();
             //ProblemNine();
-            ProblemTen();
+            //ProblemTen();
             //ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
@@ -36,6 +36,7 @@ namespace DatabaseFirstLINQ
             //ProblemNineteen();
             //ProblemTwenty();
             //BonusOne();
+            BonusTwo();
         }
 
         // <><><><><><><><> R Actions(Read) <><><><><><><><><>
@@ -156,24 +157,24 @@ namespace DatabaseFirstLINQ
 
         //}
 
-        private void ProblemTen()
-        {
-            //Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
-            // Then print the user's email as well as the product's name, price, and quantity to the console.
-            {
-                //Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
-                // Then print the user's email as well as the product's name, price, and quantity to the console.
+        //private void ProblemTen()
+        //{
+        //    //Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
+        //    // Then print the user's email as well as the product's name, price, and quantity to the console.
+        //    {
+        //        //Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
+        //        // Then print the user's email as well as the product's name, price, and quantity to the console.
 
-                var employees = _context.UserRoles.Where(ur => ur.Role.RoleName == "Employee").Select(ur => ur.User.Id);
+        //        var employees = _context.UserRoles.Where(ur => ur.Role.RoleName == "Employee").Select(ur => ur.User.Id);
 
 
 
-                foreach (var employee in employees)
-                {
-                    var carts = _context.ShoppingCarts.Include(sc => sc.Product).Where(sc => sc.User.Id.Equals(employee));
-                    Console.WriteLine(carts);
-                }
-            }
+        //        foreach (var employee in employees)
+        //        {
+        //            var carts = _context.ShoppingCarts.Include(sc => sc.Product).Where(sc => sc.User.Id.Equals(employee));
+        //            Console.WriteLine(carts);
+        //        }
+        //    }
 
 
             //    // <><><><><><><><> CUD(Create, Update, Delete) Actions<><><><><><><><><>
@@ -340,12 +341,33 @@ namespace DatabaseFirstLINQ
             //    }
 
             //}
+            private void BonusTwo()
+            {
+                //Write a query that finds the total of every users shopping cart products using LINQ.
+                //Display the total of each users shopping cart as well as the total of the totals to the console.
 
-            //private void BonusTwo()
-            //{
-            //    Write a query that finds the total of every users shopping cart products using LINQ.
-            //    Display the total of each users shopping cart as well as the total of the toals to the console.
-            //}
+                int grandTotal = 0;
+
+                Console.WriteLine(grandTotal);
+
+                var users = _context.Users.ToList();
+                foreach (var user in users)
+                {
+                    var shoppingCart = _context.ShoppingCarts.Where(sc => sc.UserId == user.Id).Select(sc => sc.Product.Price);
+                    var quatity = _context.ShoppingCarts.Where(sc => sc.UserId == user.Id).Select(sc => sc.Quantity);
+                Console.WriteLine(quatity.Count());
+
+
+                foreach (var shoppingCartItem in shoppingCart)
+                    {
+                        Console.WriteLine("=======");
+                        Console.WriteLine(user.Email);
+                        Console.WriteLine(shoppingCartItem);
+                      
+                    }
+
+                }
+            }
 
             //BIG ONE
             //private void BonusThree()
@@ -368,7 +390,7 @@ namespace DatabaseFirstLINQ
 
             //}
 
-        }
+        //}
     }
 }
     
